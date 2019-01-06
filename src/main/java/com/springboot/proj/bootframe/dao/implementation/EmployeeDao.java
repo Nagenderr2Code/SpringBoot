@@ -4,6 +4,7 @@ import com.springboot.proj.bootframe.dao.interfaces.EmployeeDAOInterface;
 import com.springboot.proj.bootframe.entites.Employee;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -12,6 +13,7 @@ import javax.persistence.PersistenceUnit;
 import java.util.List;
 
 @Repository
+@Profile("hibernate")
 public class EmployeeDao implements EmployeeDAOInterface {
 
     @PersistenceContext
@@ -23,7 +25,7 @@ public class EmployeeDao implements EmployeeDAOInterface {
 
     @Override
     public List<Employee> findAllEmployees() {
-
+        System.out.println("@@@@@@@@@@@@ Service provided from Hibernate @@@@@@@@@@@@@@");
         Session session = entityManager.unwrap(Session.class);
         Query<Employee> query = session.createQuery("from Employee", Employee.class);
         List<Employee> result = query.getResultList();
