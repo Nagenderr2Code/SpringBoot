@@ -1,6 +1,8 @@
 package com.springboot.proj.bootframe.entites;
 
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,11 +14,14 @@ public class Employee {
     private int id;
 
     @Column(name = "first_name")
+    @ApiModelProperty(required = true, notes = "First Name of the Employee")
     private String firstName;
 
     @Column(name = "last_name")
+    @ApiModelProperty(required = true, notes = "First Name of the Employee")
     private String lastName;
 
+    @ApiModelProperty(required = true, notes = "First Name of the Employee")
     @Column(name = "email")
     private String email;
 

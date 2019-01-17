@@ -3,12 +3,15 @@ package com.springboot.proj.bootframe.controllers;
 
 import com.springboot.proj.bootframe.entites.Employee;
 import com.springboot.proj.bootframe.services.interfaces.EmployeeServiceInterface;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/employees")
+@Api(value = "Employee Controller", description = "Has following services. Add, Delete, FindAll, Delete")
 public class EmployeeController {
 
     private EmployeeServiceInterface employeeService;
@@ -23,6 +26,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/{employeeId}")
+    @ApiOperation(position = 2, notes = "Find Employee By ID", value = "./findEmployeeById")
     private Employee findEmployeeById(@PathVariable int employeeId){
         return employeeService.findEmployeeById(employeeId);
     }
